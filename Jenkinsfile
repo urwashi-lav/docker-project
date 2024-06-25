@@ -1,16 +1,28 @@
-pipeline{
-  agent { dockerfile true }
-  stages{
-    stage('checkout') {
-            steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/urwashi-lav/docker-project.git"
-        
-          }
-        }
+pipeline {
+  agent any
+
+  environment{
+    docker image = ''
+    registry = 'urvimeshram/docker'
+  }
+
+  stages {
+    stage ('checkout'){
+      steps{
+        checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/urwashi-lav/docker-project.git']])
       }
     }
+
+    stage (build docker image){
+       steps{
+         script{
+           docker image = docker.build registry
+         }
+       }      
+    }
+
+
+    
   }
+
 }
