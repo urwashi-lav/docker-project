@@ -1,6 +1,6 @@
 # This is apache web server on Ubuntu server
 
-FROM ubuntu:12.04
+FROM ubuntu
 
 MAINTAINER Urwashi Lavsare <urvi2991999@gmail.com>
 
