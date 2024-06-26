@@ -1,5 +1,5 @@
 pipeline {
- agent {labels "java-build-node"}
+ agent {label "java-build-node"}
   environment {
        DOCKERHUB_CREDENTIALS = credentials ('urvimeshram_dockerhub')    
   }
